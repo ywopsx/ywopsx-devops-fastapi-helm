@@ -1,17 +1,3 @@
-## Python 3.13 Alpine 베이스 최신 stable 버전
-#FROM python:3.13-alpine
-
-# 작업 디렉토리 설정
-#WORKDIR /app
-
-#COPY requirements.txt .
-#RUN pip install --no-cache-dir -r requirements.txt
-
-#COPY . .
-
-#CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "3000"]
-
-################################################### 냥1
 # 안정성과 DB 드라이버 호환성을 고려해 slim 사용
 FROM python:3.13-slim
 
