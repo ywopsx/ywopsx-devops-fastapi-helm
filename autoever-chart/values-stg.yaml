@@ -1,0 +1,21 @@
+namespace: autoever-stg
+replicaCount: 2
+env: stg
+
+ingress:
+  hosts:
+    - host: stg-devops-test.autoever.test
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: autoever-stg-autoever-chart
+              port:
+                number: 80
+
+db:
+  secretName: autoever-stg-db-secret
+  host: stg-db.autoever.test
+  port: 5432
+  name: stg_db

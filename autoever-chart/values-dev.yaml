@@ -1,0 +1,21 @@
+namespace: autoever-dev
+replicaCount: 1
+env: dev
+
+ingress:
+  hosts:
+    - host: dev-devops-test.autoever.test
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: autoever-dev-autoever-chart
+              port:
+                number: 80
+
+db:
+  secretName: autoever-dev-db-secret
+  host: dev-db.autoever.test
+  port: 5432
+  name: dev_db

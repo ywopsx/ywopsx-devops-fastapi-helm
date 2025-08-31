@@ -1,0 +1,21 @@
+namespace: autoever-prd
+replicaCount: 3
+env: prd
+
+ingress:
+  hosts:
+    - host: devops-test.autoever.test
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: autoever-prd-autoever-chart
+              port:
+                number: 80
+
+db:
+  secretName: autoever-prd-db-secret
+  host: prd-db.autoever.test
+  port: 5432
+  name: prd_db
