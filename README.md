@@ -60,7 +60,7 @@ docker rm devops_test
 # 이미지 제거 (필요 시)
 docker rmi devops_test:v1.0
 
-# 이미지 Docker Hub에 푸시 (선택)
+# 이미지 Docker Hub에 푸시
 docker tag devops_test:v1.0 ywroh519/devops_test:v1.0
 docker push ywroh519/devops_test:v1.0
 ```
