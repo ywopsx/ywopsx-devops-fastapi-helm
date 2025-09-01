@@ -1,7 +1,4 @@
 # DevOps 과제: FastAPI & Kubernetes 배포 샘플
-FastAPI 기반 웹 애플리케이션을 Kubernetes 환경에서 배포하고 테스트하기 위한 샘플 프로젝트입니다.
-로컬 개발 환경에서는 Python 3.13 기반 가상환경에서 테스트 가능하며, Kubernetes 배포 시 Helm Chart와 Ingress를 활용합니다.
-
 
 ## 1. 프로젝트 개요
 FastAPI 기반 웹 애플리케이션을 Kubernetes 환경에서 배포하고 테스트하기 위한 샘플 프로젝트입니다.
