@@ -145,14 +145,16 @@ ingress:
               port:
                 number: 80
 ```
-외부 접근 확인
+
+> 외부 접근 확인 (주의: Minikube Tunnel을 실행해야 외부에서 접근 가능)
 ### 브라우저에서 확인
 http://devops-test.autoever.test
 
 ### 또는 curl로 확인
 curl http://devops-test.autoever.test
 
-주의: Minikube Tunnel을 실행해야 외부에서 접근 가능
+
+
 
 ---
 
