@@ -1,4 +1,4 @@
-# DevOps 과제: FastAPI & Kubernetes 배포 샘플
+# DevOps 과제: FastAPI & Kubernetes 배포
 
 ## 1. 프로젝트 개요
 FastAPI 기반 웹 애플리케이션을 Kubernetes 환경에서 배포하고 테스트하기 위한 샘플 프로젝트입니다.
