@@ -145,6 +145,14 @@ ingress:
               port:
                 number: 80
 ```
+외부 접근 확인
+# 브라우저에서 확인
+http://devops-test.autoever.test
+
+# 또는 curl로 확인
+curl http://devops-test.autoever.test
+
+주의: Minikube Tunnel을 실행해야 외부에서 접근 가능
 
 ---
 
@@ -179,24 +187,3 @@ FASTAPI_TEST/
 - requirements.txt : Python 의존성
 - secret.yaml : Kubernetes Secret (DB 계정 등)
 - README.md : 프로젝트 설명
-
----
-
-## 8. GitHub에 업로드
-
-```bash
-# Git 초기화 (필요 시)
-git init
-
-# 모든 변경사항 추가
-git add .
-
-# 커밋
-git commit -m "Initial commit with README, Dockerfile, Helm chart"
-
-# GitHub 레포지토리 연결
-git remote add origin <레포지토리_URL>
-
-# 브랜치 설정 및 push
-git branch -M main
-git push -u origin main
