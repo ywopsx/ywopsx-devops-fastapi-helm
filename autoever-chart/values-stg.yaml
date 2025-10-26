@@ -1,21 +1,21 @@
-namespace: autoever-stg
+namespace: ywopsx-stg
 replicaCount: 2
 env: stg
 
 ingress:
   hosts:
-    - host: stg-devops-test.autoever.test
+    - host: stg-devops-test.ywopsx.test
       paths:
         - path: /
           pathType: Prefix
           backend:
             service:
-              name: autoever-stg-autoever-chart
+              name: ywopsx-stg-ywopsx-chart
               port:
                 number: 80
 
 db:
-  secretName: autoever-stg-db-secret
-  host: stg-db.autoever.test
+  secretName: ywopsx-stg-db-secret
+  host: stg-db.ywopsx.test
   port: 5432
   name: stg_db

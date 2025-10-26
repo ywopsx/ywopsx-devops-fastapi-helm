@@ -1,21 +1,21 @@
-namespace: autoever-prd
+namespace: ywopsx-prd
 replicaCount: 3
 env: prd
 
 ingress:
   hosts:
-    - host: devops-test.autoever.test
+    - host: devops-test.ywopsx.test
       paths:
         - path: /
           pathType: Prefix
           backend:
             service:
-              name: autoever-prd-autoever-chart
+              name: ywopsx-prd-ywopsx-chart
               port:
                 number: 80
 
 db:
-  secretName: autoever-prd-db-secret
-  host: prd-db.autoever.test
+  secretName: ywopsx-prd-db-secret
+  host: prd-db.ywopsx.test
   port: 5432
   name: prd_db

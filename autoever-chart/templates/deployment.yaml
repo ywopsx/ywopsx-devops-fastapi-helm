@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "autoever-chart.fullname" . }}
+  name: {{ include "ywopsx-chart.fullname" . }}
   namespace: {{ .Release.Namespace }}
   labels:
-    {{- include "autoever-chart.labels" . | nindent 4 }}
+    {{- include "ywopsx-chart.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "autoever-chart.selectorLabels" . | nindent 6 }}
+      {{- include "ywopsx-chart.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -19,7 +19,7 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "autoever-chart.labels" . | nindent 8 }}
+        {{- include "ywopsx-chart.labels" . | nindent 8 }}
         {{- with .Values.podLabels }}
         {{- toYaml . | nindent 8 }}
         {{- end }}
@@ -59,22 +59,22 @@ spec:
             - name: ENVIRONMENT
               valueFrom:
                 configMapKeyRef:
-                  name: {{ include "autoever-chart.fullname" . }}-config
+                  name: {{ include "ywopsx-chart.fullname" . }}-config
                   key: ENVIRONMENT
             - name: DB_HOST
               valueFrom:
                 configMapKeyRef:
-                  name: {{ include "autoever-chart.fullname" . }}-config
+                  name: {{ include "ywopsx-chart.fullname" . }}-config
                   key: DB_HOST
             - name: DB_PORT
               valueFrom:
                 configMapKeyRef:
-                  name: {{ include "autoever-chart.fullname" . }}-config
+                  name: {{ include "ywopsx-chart.fullname" . }}-config
                   key: DB_PORT
             - name: DB_NAME
               valueFrom:
                 configMapKeyRef:
-                  name: {{ include "autoever-chart.fullname" . }}-config
+                  name: {{ include "ywopsx-chart.fullname" . }}-config
                   key: DB_NAME
           # -------------------------------------------------------------
           {{- with .Values.livenessProbe }}

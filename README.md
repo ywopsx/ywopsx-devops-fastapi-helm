@@ -72,9 +72,9 @@ docker push ywroh519/devops_test:v1.0
 ### 5.1 네임스페이스 생성
 
 ```bash
-kubectl create namespace autoever-dev
-kubectl create namespace autoever-stg
-kubectl create namespace autoever-prd
+kubectl create namespace ywopsx-dev
+kubectl create namespace ywopsx-stg
+kubectl create namespace ywopsx-prd
 ```
 
 ### 5.2 Secret 생성 (DB 계정 관리용)
@@ -91,8 +91,8 @@ kubectl apply -f secret.yaml
 apiVersion: v1
 kind: Secret
 metadata:
-  name: autoever-dev-db-secret
-  namespace: autoever-dev
+  name: ywopsx-dev-db-secret
+  namespace: ywopsx-dev
 type: Opaque
 stringData:
   username: dev_user
@@ -105,13 +105,13 @@ stringData:
 
 ```bash
 # dev 환경
-helm upgrade autoever-dev ./autoever-chart -f ./autoever-chart/values-dev.yaml --set image.tag="v1.0" --namespace autoever-dev
+helm upgrade ywopsx-dev ./ywopsx-chart -f ./ywopsx-chart/values-dev.yaml --set image.tag="v1.0" --namespace ywopsx-dev
 
 # stg 환경
-helm upgrade autoever-stg ./autoever-chart -f ./autoever-chart/values-stg.yaml --set image.tag="v1.0" --namespace autoever-stg
+helm upgrade ywopsx-stg ./ywopsx-chart -f ./ywopsx-chart/values-stg.yaml --set image.tag="v1.0" --namespace ywopsx-stg
 
 # prd 환경
-helm upgrade autoever-prd ./autoever-chart -f ./autoever-chart/values-prd.yaml --set image.tag="v1.0" --namespace autoever-prd
+helm upgrade ywopsx-prd ./ywopsx-chart -f ./ywopsx-chart/values-prd.yaml --set image.tag="v1.0" --namespace ywopsx-prd
 ```
 
 ---
@@ -124,34 +124,34 @@ Minikube에서는 서비스 타입을 **ClusterIP**로 설정하고, 도메인 �
 sudo minikube tunnel
 ```
 
-- 브라우저 테스트용 hosts 예시: `127.0.0.1 devops-test.autoever.test`
+- 브라우저 테스트용 hosts 예시: `127.0.0.1 devops-test.ywopsx.test`
 - ClusterIP 서비스는 외부 IP를 가지지 않으므로, Tunnel을 통해 Ingress를 노출해야 함
 - values-prd.yaml 예시:
 
 ```yaml
-namespace: autoever-prd
+namespace: ywopsx-prd
 replicaCount: 3
 env: prd
 
 ingress:
   hosts:
-    - host: devops-test.autoever.test
+    - host: devops-test.ywopsx.test
       paths:
         - path: /
           pathType: Prefix
           backend:
             service:
-              name: autoever-prd-autoever-chart
+              name: ywopsx-prd-ywopsx-chart
               port:
                 number: 80
 ```
 
 > 외부 접근 확인 (주의: Minikube Tunnel을 실행해야 외부에서 접근 가능)
 ### 브라우저에서 확인
-http://devops-test.autoever.test
+http://devops-test.ywopsx.test
 
 ### 또는 curl로 확인
-curl http://devops-test.autoever.test
+curl http://devops-test.ywopsx.test
 
 
 
@@ -162,7 +162,7 @@ curl http://devops-test.autoever.test
 
 ```
 FASTAPI_TEST/
-├── autoever-chart/
+├── ywopsx-chart/
 │   ├── templates/
 │   │   ├── _helpers.tpl
 │   │   ├── configmap.yaml
@@ -181,7 +181,7 @@ FASTAPI_TEST/
 ├── requirements.txt
 └── secret.yaml
 ```
-- autoever-chart/ : Helm Chart 관련 파일 전체
+- ywopsx-chart/ : Helm Chart 관련 파일 전체
 - templates/ : Helm 템플릿 (Deployment, Service, Ingress 등)
 - values-*.yaml : 환경별 값 (dev/stg/prd)
 - Dockerfile : FastAPI 앱 컨테이너 빌드

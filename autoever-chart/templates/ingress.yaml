@@ -2,9 +2,9 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ include "autoever-chart.fullname" . }}
+  name: {{ include "ywopsx-chart.fullname" . }}
   labels:
-    {{- include "autoever-chart.labels" . | nindent 4 }}
+    {{- include "ywopsx-chart.labels" . | nindent 4 }}
   {{- with .Values.ingress.annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}
@@ -35,7 +35,7 @@ spec:
             {{- end }}
             backend:
               service:
-                name: {{ include "autoever-chart.fullname" $ }}
+                name: {{ include "ywopsx-chart.fullname" $ }}
                 port:
                   number: {{ $.Values.service.port }}
           {{- end }}
